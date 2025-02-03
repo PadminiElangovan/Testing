@@ -1,0 +1,918 @@
+{
+	"info": {
+		"_postman_id": "1d86af07-9ff2-4431-84a3-7f462f814b4c",
+		"name": "API_User_Swagger",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41487530"
+	},
+	"item": [
+		{
+			"name": "Search Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//Status code validation\r",
+									"pm.test(\"Status code is 'ResponseCode'\", () => {\r",
+									"    pm.response.to.have.status(pm.variables.get(\"Code\"));\r",
+									"});\r",
+									"\r",
+									"//Status Code Text Validation\r",
+									"pm.test(\"Status code Text validation\", () => {\r",
+									"    pm.response.to.have.status(pm.variables.get(\"Linemsg\"));\r",
+									"});\r",
+									"\r",
+									"//Header ContentType Validation\r",
+									"pm.test(\"Header Content-Type is JSON\", () => {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"//Cookie Present\r",
+									"pm.test(\"Cookie JSESSIONID is present\", () => {\r",
+									"    pm.expect(pm.cookies.has('JSESSIONID')).to.be.true;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"if(((pm.variables.get(\"Method\"))===(\"Create\")) || ((pm.variables.get(\"Method\"))===(\"Update\"))){\r",
+									"    pm.execution.skipRequest();\r",
+									"}\r",
+									"pm.variables.set(\"EndPoint\",pm.globals.get(\"SearchAllUsrEp\"));\r",
+									"\r",
+									"\r",
+									"if((pm.variables.get(\"Scenario\"))===(\"IncorrectEndPoint\")){\r",
+									"\r",
+									"    var InEp = pm.globals.get(\"SearchAllUsrEp\")+\"All\";\r",
+									"    pm.variables.set(\"EndPoint\",InEp);\r",
+									"    \r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{swagger_Pswd}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{swagger_Username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{swagger_base_URL}}{{EndPoint}}",
+							"host": [
+								"{{swagger_base_URL}}{{EndPoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"if(((pm.variables.get(\"Method\"))===(\"Create\")) || ((pm.variables.get(\"Method\"))===(\"Update\"))){\r",
+									"    pm.execution.skipRequest();\r",
+									"}\r",
+									"\r",
+									"pm.variables.set(\"EndPoint\",pm.globals.get(\"SearchIDEP\"));\r",
+									"\r",
+									"\r",
+									"if((pm.variables.get(\"Scenario\"))===(\"IncorrectEndPoint\")){\r",
+									"\r",
+									"    var InEp = pm.globals.get(\"SearchIDEP\")+\"byid\";\r",
+									"    pm.variables.set(\"EndPoint\",InEp);\r",
+									"    \r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//Status code validation\r",
+									"\r",
+									"pm.test(\"Status code is 'ResponseCode'\", () => {\r",
+									"    pm.response.to.have.status(pm.variables.get(\"Code\"));\r",
+									"});\r",
+									"\r",
+									"//Status Code Text Validation\r",
+									"\r",
+									"pm.test(\"Status code Text validation\", () => {\r",
+									"    pm.response.to.have.status(pm.variables.get(\"Linemsg\"));\r",
+									"});\r",
+									"\r",
+									"//Header ContentType Validation\r",
+									"pm.test(\"Header Content-Type is JSON\", () => {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"//Cookie Present\r",
+									"pm.test(\"Cookie JSESSIONID is present\", () => {\r",
+									"    pm.expect(pm.cookies.has('JSESSIONID')).to.be.true;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{swagger_Pswd}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{swagger_Username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{swagger_base_URL}}{{EndPoint}}/:id",
+							"host": [
+								"{{swagger_base_URL}}{{EndPoint}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{ByID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Name",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"if(((pm.variables.get(\"Method\"))===(\"Create\")) || ((pm.variables.get(\"Method\"))===(\"Update\"))){\r",
+									"    pm.execution.skipRequest();\r",
+									"}\r",
+									"\r",
+									"pm.variables.set(\"EndPoint\",pm.globals.get(\"SearchNameEp\"));\r",
+									"\r",
+									"if((pm.variables.get(\"Scenario\"))===(\"IncorrectEndPoint\")){\r",
+									"\r",
+									"    var InEp = pm.globals.get(\"SearchNameEp\")+\"First\";\r",
+									"    pm.variables.set(\"EndPoint\",InEp);\r",
+									"    \r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//Status code validation\r",
+									"\r",
+									"pm.test(\"Status code is 'ResponseCode'\", () => {\r",
+									"    pm.response.to.have.status(pm.variables.get(\"Code\"));\r",
+									"});\r",
+									"\r",
+									"//Status Code Text Validation\r",
+									"\r",
+									"pm.test(\"Status code Text validation\", () => {\r",
+									"    pm.response.to.have.status(pm.variables.get(\"Linemsg\"));\r",
+									"});\r",
+									"\r",
+									"//Header ContentType Validation\r",
+									"pm.test(\"Header Content-Type is JSON\", () => {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"//Cookie Present\r",
+									"pm.test(\"Cookie JSESSIONID is present\", () => {\r",
+									"    pm.expect(pm.cookies.has('JSESSIONID')).to.be.true;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{swagger_Pswd}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{swagger_Username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{swagger_base_URL}}{{EndPoint}}/:fname",
+							"host": [
+								"{{swagger_base_URL}}{{EndPoint}}"
+							],
+							"path": [
+								":fname"
+							],
+							"variable": [
+								{
+									"key": "fname",
+									"value": "{{Fname}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create User",
+			"item": [
+				{
+					"name": "Create User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"if((pm.variables.get(\"Method\"))===(\"Update\")) {\r",
+									"    pm.execution.skipRequest();\r",
+									"}\r",
+									"\r",
+									"pm.variables.set(\"EndPoint\",pm.globals.get(\"CreateUsrEP\"));\r",
+									"\r",
+									"if((pm.variables.get(\"Scenario\"))===(\"IncorrectEndPoint\")){\r",
+									"\r",
+									"    var InEp = pm.globals.get(\"CreateUsrEP\")+\"new\";\r",
+									"    pm.variables.set(\"EndPoint\",InEp);\r",
+									"  \r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//Status code validation\r",
+									"pm.test(\"Status code is 'ResponseCode'\", () => {\r",
+									"    if((pm.variables.get(\"Scenario\"))===(\"Valid\")){\r",
+									"       pm.response.to.have.status(201);\r",
+									"    }\r",
+									"    else{\r",
+									"         pm.response.to.have.status(pm.variables.get(\"Code\"));\r",
+									"    }\r",
+									"   \r",
+									"});\r",
+									"\r",
+									"//Status Code Text Validation\r",
+									"pm.test(\"Status code Text validation\", () => {\r",
+									"     if((pm.variables.get(\"Scenario\"))===(\"Valid\")){\r",
+									"       pm.response.to.have.status(\"Created\"); \r",
+									"    }\r",
+									"    else{\r",
+									"    pm.response.to.have.status(pm.variables.get(\"Linemsg\"));\r",
+									"    }\r",
+									"   \r",
+									"});\r",
+									"\r",
+									"//Header ContentType Validation\r",
+									"pm.test(\"Header Content-Type is JSON\", () => {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"//Cookie Present\r",
+									"pm.test(\"Cookie JSESSIONID is present\", () => {\r",
+									"    pm.expect(pm.cookies.has('JSESSIONID')).to.be.true;\r",
+									"});\r",
+									"\r",
+									"// Request body Data Type validation\r",
+									"pm.test(\"Validate Respone json Datatype\", () =>{\r",
+									"pm.expect(response.user_id).to.be.a(\"number\");\r",
+									"pm.expect(response.user_first_name).to.be.a(\"string\");\r",
+									"pm.expect(response.user_last_name).to.be.a(\"string\");\r",
+									"pm.expect(response.user_contact_number).to.be.a(\"number\");\r",
+									"pm.expect(response.user_email_id).to.be.a(\"string\");\r",
+									"pm.expect(response.creation_time).to.be.a(\"string\");\r",
+									"pm.expect(response.last_mod_time).to.be.a(\"string\");\r",
+									"\r",
+									"pm.expect(response.userAddress).to.be.a(\"object\");\r",
+									"pm.expect(response.userAddress.addressId).to.be.a(\"number\");\r",
+									"pm.expect(response.userAddress.plotNumber).to.be.a(\"string\");\r",
+									"pm.expect(response.userAddress.street).to.be.a(\"string\");\r",
+									"pm.expect(response.userAddress.state).to.be.a(\"string\");\r",
+									"pm.expect(response.userAddress.country).to.be.a(\"string\");\r",
+									"pm.expect(response.userAddress.zipCode).to.be.a(\"number\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"var schema = {\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"userAddress\": {\r",
+									"      \"type\": \"object\",\r",
+									"      \"properties\": {\r",
+									"        \"addressId\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"plotNumber\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"street\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"state\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"country\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"zipCode\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        }\r",
+									"      },\r",
+									"      \"required\": [\r",
+									"        \"addressId\",\r",
+									"        \"plotNumber\",\r",
+									"        \"street\",\r",
+									"        \"state\",\r",
+									"        \"country\",\r",
+									"        \"zipCode\"\r",
+									"      ]\r",
+									"    },\r",
+									"    \"user_id\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"user_first_name\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"user_last_name\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"user_contact_number\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"user_email_id\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"creation_time\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"last_mod_time\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"userAddress\",\r",
+									"    \"user_id\",\r",
+									"    \"user_first_name\",\r",
+									"    \"user_last_name\",\r",
+									"    \"user_contact_number\",\r",
+									"    \"user_email_id\",\r",
+									"    \"creation_time\",\r",
+									"    \"last_mod_time\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"// Schema validation\r",
+									"pm.test(\"Schema Validation AJV\", () =>{\r",
+									"pm.response.to.have.jsonSchema(schema);\r",
+									"})\r",
+									"\r",
+									"console.log(response.user_id);\r",
+									"pm.globals.set(\"user_id\", response.user_id);\r",
+									"pm.globals.set(\"FName\",response.user_first_name);\r",
+									"pm.globals.set(\"LName\",response.user_Last_name);\r",
+									"pm.globals.set(\"PhoneNo\",response.user_contact_number);\r",
+									"pm.globals.set(\"Email\",response.user_email_id);\r",
+									"pm.globals.set(\"TimeCreated\",response.creation_time);\r",
+									"pm.globals.set(\"LModified\",response.last_mod_time);\r",
+									"\r",
+									"//pm.globals.set(\"PlotNumber\", response.userAddress.plotNumber);\r",
+									"pm.globals.set(\"Street\", response.userAddress.street);\r",
+									"pm.globals.set(\"State\", response.userAddress.state);\r",
+									"pm.globals.set(\"Country\", response.userAddress.country);\r",
+									"pm.globals.set(\"Zip\", response.userAddress.zipCode);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "userapi@2025",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Numpy@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"user_first_name\": \"{{FirstName}}\",\r\n \"user_last_name\":  \"{{LastName}}\",\r\n\"user_contact_number\": {{Phno}},\r\n \"user_email_id\": \"{{Email}}\",\r\n\"userAddress\": {\r\n   \"plotNumber\": \"{{Plot}}\",\r\n   \"street\": \"{{Street}}\",\r\n   \"state\": \"{{State}}\",\r\n    \"country\": \"{{Country}}\",\r\n   \"zipCode\": \"{{Zip}}\"\r\n}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{swagger_base_URL}}{{EndPoint}}",
+							"host": [
+								"{{swagger_base_URL}}{{EndPoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Update User",
+			"item": [
+				{
+					"name": "Update user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"if(((pm.variables.get(\"Method\"))===(\"Create\")) ||((pm.variables.get(\"Scenario\"))===(\"Valid\"))){\r",
+									"    pm.execution.skipRequest();\r",
+									"}\r",
+									"\r",
+									"pm.variables.set(\"EndPoint\",pm.globals.get(\"UpdateUsrEP\"));\r",
+									"\r",
+									"if((pm.variables.get(\"Scenario\"))===(\"IncorrectEndPoint\")){\r",
+									"\r",
+									"    var InEp = pm.globals.get(\"UpdateUsrEP\")+\"edit\";\r",
+									"    pm.variables.set(\"EndPoint\",InEp);\r",
+									"\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//Status code validation\r",
+									"pm.test(\"Status code is 'ResponseCode'\", () => {\r",
+									"    pm.response.to.have.status(pm.variables.get(\"Code\"));\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//Status Code Text Validation\r",
+									"\r",
+									"pm.test(\"Status code Text validation\", () => {\r",
+									"    pm.response.to.have.status(pm.variables.get(\"Linemsg\"));\r",
+									"});\r",
+									"\r",
+									"//Header ContentType Validation\r",
+									"pm.test(\"Header Content-Type is JSON\", () => {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"//Cookie Present\r",
+									"pm.test(\"Cookie JSESSIONID is present\", () => {\r",
+									"    pm.expect(pm.cookies.has('JSESSIONID')).to.be.true;\r",
+									"});\r",
+									"\r",
+									"// Request body Data Type validation\r",
+									"pm.test(\"Validate Respone json Datatype\", () =>{\r",
+									"pm.expect(response.user_id).to.be.a(\"number\");\r",
+									"pm.expect(response.user_first_name).to.be.a(\"string\");\r",
+									"pm.expect(response.user_last_name).to.be.a(\"string\");\r",
+									"pm.expect(response.user_contact_number).to.be.a(\"number\");\r",
+									"pm.expect(response.user_email_id).to.be.a(\"string\");\r",
+									"pm.expect(response.creation_time).to.be.a(\"string\");\r",
+									"pm.expect(response.last_mod_time).to.be.a(\"string\");\r",
+									"\r",
+									"pm.expect(response.userAddress).to.be.a(\"object\");\r",
+									"pm.expect(response.userAddress.addressId).to.be.a(\"number\");\r",
+									"pm.expect(response.userAddress.plotNumber).to.be.a(\"string\");\r",
+									"pm.expect(response.userAddress.street).to.be.a(\"string\");\r",
+									"pm.expect(response.userAddress.state).to.be.a(\"string\");\r",
+									"pm.expect(response.userAddress.country).to.be.a(\"string\");\r",
+									"pm.expect(response.userAddress.zipCode).to.be.a(\"number\");\r",
+									"});\r",
+									"\r",
+									"var schema = {\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"userAddress\": {\r",
+									"      \"type\": \"object\",\r",
+									"      \"properties\": {\r",
+									"        \"addressId\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"plotNumber\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"street\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"state\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"country\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"zipCode\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        }\r",
+									"      },\r",
+									"      \"required\": [\r",
+									"        \"addressId\",\r",
+									"        \"plotNumber\",\r",
+									"        \"street\",\r",
+									"        \"state\",\r",
+									"        \"country\",\r",
+									"        \"zipCode\"\r",
+									"      ]\r",
+									"    },\r",
+									"    \"user_id\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"user_first_name\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"user_last_name\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"user_contact_number\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"user_email_id\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"creation_time\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"last_mod_time\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"userAddress\",\r",
+									"    \"user_id\",\r",
+									"    \"user_first_name\",\r",
+									"    \"user_last_name\",\r",
+									"    \"user_contact_number\",\r",
+									"    \"user_email_id\",\r",
+									"    \"creation_time\",\r",
+									"    \"last_mod_time\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"if((pm.variables.get(\"Scenario\"))===(\"Valid\")){\r",
+									"   \r",
+									"// Schema validation\r",
+									"pm.test(\"Schema Validation AJV\", () =>{\r",
+									"pm.response.to.have.jsonSchema(schema);\r",
+									"})\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "userapi@2025",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Numpy@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userAddress\": {\r\n        \"addressId\": {{updateAddID}},\r\n        \"plotNumber\": \"{{Plot}}\",\r\n        \"street\": \"{{Street}}\",\r\n        \"state\": \"{{State}}\",\r\n        \"country\": \"{{Country}}\",\r\n        \"zipCode\": \"{{Zip}}\"\r\n    },\r\n    \"user_id\": {{updateid}},\r\n    \"user_first_name\": \"{{FirstName}}\",\r\n    \"user_last_name\": \"{{LastName}}\",\r\n    \"user_contact_number\": \"{{Phno}}\",\r\n    \"user_email_id\": \"{{Email}}\",\r\n    \"creation_time\": \"2025-02-02T03:19:18.343+00:00\",\r\n    \"last_mod_time\": \"2025-02-02T03:29:13.823+00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{swagger_base_URL}}{{EndPoint}}/:id",
+							"host": [
+								"{{swagger_base_URL}}{{EndPoint}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{updateid}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete User",
+			"item": [
+				{
+					"name": "DELETE User By ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"if(((pm.variables.get(\"Method\"))===(\"Create\")) || ((pm.variables.get(\"Method\"))===(\"Update\"))){\r",
+									"    pm.execution.skipRequest();\r",
+									"}\r",
+									"\r",
+									"pm.variables.set(\"EndPoint\",pm.globals.get(\"DeleteIdEP\"));\r",
+									"\r",
+									"if((pm.variables.get(\"Scenario\"))===(\"IncorrectEndPoint\")){\r",
+									"    var InEp = pm.globals.get(\"DeleteIdEP\")+\"ID\";\r",
+									"    pm.variables.set(\"EndPoint\",InEp);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//Status code validation\r",
+									"\r",
+									"pm.test(\"Status code is 'ResponseCode'\", () => {\r",
+									"    pm.response.to.have.status(pm.variables.get(\"Code\"));\r",
+									"});\r",
+									"\r",
+									"//Status Code Text Validation\r",
+									"\r",
+									"pm.test(\"Status code Text validation\", () => {\r",
+									"    pm.response.to.have.status(pm.variables.get(\"Linemsg\"));\r",
+									"});\r",
+									"\r",
+									"//Header ContentType Validation\r",
+									"pm.test(\"Header Content-Type is JSON\", () => {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"//Cookie Present\r",
+									"pm.test(\"Cookie JSESSIONID is present\", () => {\r",
+									"    pm.expect(pm.cookies.has('JSESSIONID')).to.be.true;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{swagger_Pswd}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{swagger_Username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{swagger_base_URL}}{{EndPoint}}/:id",
+							"host": [
+								"{{swagger_base_URL}}{{EndPoint}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{user_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE User By Name",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"if(((pm.variables.get(\"Method\"))===(\"Create\")) || ((pm.variables.get(\"Method\"))===(\"Update\"))){\r",
+									"    pm.execution.skipRequest();\r",
+									"}\r",
+									"\r",
+									"pm.variables.set(\"EndPoint\",pm.globals.get(\"DeleteNamEP\"));\r",
+									"\r",
+									"if((pm.variables.get(\"Scenario\"))===(\"IncorrectEndPoint\")){\r",
+									"    \r",
+									"    var InEp = pm.globals.get(\"DeleteNamEP\")+\"ID\";\r",
+									"    pm.variables.set(\"EndPoint\",InEp);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//Status code validation\r",
+									"\r",
+									"pm.test(\"Status code is 'ResponseCode'\", () => {\r",
+									"    pm.response.to.have.status(pm.variables.get(\"Code\"));\r",
+									"});\r",
+									"\r",
+									"//Status Code Text Validation\r",
+									"\r",
+									"pm.test(\"Status code Text validation\", () => {\r",
+									"    pm.response.to.have.status(pm.variables.get(\"Linemsg\"));\r",
+									"});\r",
+									"\r",
+									"//Header ContentType Validation\r",
+									"pm.test(\"Header Content-Type is JSON\", () => {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"//Cookie Present\r",
+									"pm.test(\"Cookie JSESSIONID is present\", () => {\r",
+									"    pm.expect(pm.cookies.has('JSESSIONID')).to.be.true;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{swagger_Pswd}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{swagger_Username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{swagger_base_URL}}{{EndPoint}}/:fname",
+							"host": [
+								"{{swagger_base_URL}}{{EndPoint}}"
+							],
+							"path": [
+								":fname"
+							],
+							"variable": [
+								{
+									"key": "fname",
+									"value": "{{DELName}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "randomPhone",
+			"value": ""
+		}
+	]
+}

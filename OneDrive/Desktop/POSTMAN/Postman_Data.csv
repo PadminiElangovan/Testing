@@ -1,0 +1,29 @@
+FirstName,LastName,Phno,Email,Plot,Street,State,Country,Zip,swagger_Username,swagger_Pswd,swagger_base_URL,EndPoint,Code,Linemsg,Scenario,Method
+ChilliMittx,sause,9818130299,abdMittf2@gfd.com,10A-01,santarita,texas,USA,98765,,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,401,Unauthorized,EmptyUsr,Common
+ChilliMittxx,sause,9818130300,acdMittf3@gfd.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,401,Unauthorized,EmptyPswd,Common
+ChilliMittxxx,sause,9818130301,addMittf4@gfd.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,404,Not Found,IncorrectEndPoint,Common
+ChilliMittxxxxx,sause,9818130302,afdMittf6@gfd.com,10A-01,santarita,texas,USA,98765,,,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,401,Unauthorized,No Auth,Common
+ChilliMittxxxx,sause,9818130303,aedMittf5@gfd.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuseruapp.com,/uap/users,404,Not Found,IncorrectBaseURL,Common
+ChilliMitt,sause,9818130304,aadMittf1@gfd.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,200,OK,Valid,Common
+Chilli12Mitt,sause,9818130305,aadMittf7@gfd.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,NumericFirstname,Create
+Chilli$!Mitt,sause,9818130306,aadMittf8@gfd.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,SpecialCharFirstName,Create
+,sause,9818130307,aadMittf9@gfd.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,EmptyFirstName,Create
+ChilliMitta,sause15,9818130308,aadMittf10@gfd.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,NumericLastname,Create
+ChilliMittb,sause#$,9818130309,aadMittf11@gfd.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,SpecialCharLastName,Create
+ChilliMittc,,9818130310,aadMittf12@gfd.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,EmptyLastName,Create
+ChilliMitth,sause,9818130311,,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,EmailEmpty,Create
+ChilliMittd,sause,9.86E+11,aadMittf13@gfd.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,PhoneGrt10Digit,Create
+ChilliMittf,sause,98127111,aadMittf14@gfd.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,PhoneLess10Digit,Create
+ChilliMittg,sause,,aadMittf15@gfd.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,EmptyPhone,Create
+ChilliReed,sause,9864127098,aadReedf1@gfd.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,409,Conflict,ExistingUser,Create
+Reginald12,sause,4593868476,Bartholome_Schaefer@hotmail.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,NumericFirstname,Update
+Reginald#,sause,4593868476,Bartholome_Schaefer@hotmail.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,SpecialCharFirstName,Update
+,sause,4593868476,Bartholome_Schaefer@hotmail.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,EmptyFirstName,Update
+Reginald,sause12,4593868476,Bartholome_Schaefer@hotmail.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,NumericLastname,Update
+Reginald,sause$,4593868476,Bartholome_Schaefer@hotmail.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,SpecialCharLastName,Update
+Reginald,,4593868476,Bartholome_Schaefer@hotmail.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,EmptyLastName,Update
+Reginald,sause,45938684761,Bartholome_Schaefer@hotmail.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,PhoneGrt10Digit,Update
+Reginald,sause,45938476,Bartholome_Schaefer@hotmail.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,PhoneLess10Digit,Update
+Reginald,sause,,Bartholome_Schaefer@hotmail.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,EmptyPhone,Update
+Reginald,sause,4593868476,,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,400,Bad Request,EmailEmpty,Update
+Reginald,sause,4593868476,Bartholome_Schaefer@hotmail.com,10A-01,santarita,texas,USA,98765,Numpy@gmail.com,userapi@2025,https://userserviceapp-f5a54828541b.herokuapp.com,/uap/users,200,OK,ExistingUser,Update
